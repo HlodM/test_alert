@@ -1,1 +1,1 @@
-Find resistance level before alert 
+Алгоритм поиса уровней сопротивления
