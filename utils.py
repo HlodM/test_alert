@@ -57,10 +57,10 @@ def prepare_alert_df(
 def find_resistance_length(
         data: pd.Series,
         client: binance.client.Client,
-        bars_per_level: int,
-        mins_before: int = 160,
-        mins_after: int = 120,
-        tz_diff: int = 3,
+        bars_per_level: int = BARS_PER_LEVEL,
+        mins_before: int = MINS_BEFORE,
+        mins_after: int = MINS_AFTER,
+        tz_diff: int = TZ_DIFF,
 ) -> Tuple[Optional[float], Optional[int], Optional[int], Optional[int], Optional[float]]:
     """
     Download historical data and return resist level, count of touches of resist level,
@@ -110,7 +110,7 @@ def is_max(data: np.ndarray, index: int, area: int = MAX_AREA) -> bool:
     return data[index] == max(data[index-area: index+area+1])
 
 
-def find_first_max(data: np.ndarray, mins_before: int = 160, area: int = MAX_AREA) -> tuple:
+def find_first_max(data: np.ndarray, mins_before: int = MINS_BEFORE, area: int = MAX_AREA) -> tuple:
     """
     Find first max that satisfied resist level conditions
     :param data: time historical data
